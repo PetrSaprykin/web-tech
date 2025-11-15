@@ -1,0 +1,275 @@
+.dishes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.dish-card {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 40px;
+  background-color: white;
+  border-radius: 35px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: 300ms;
+}
+
+.dish-card:hover {
+  border: 2px solid tomato;
+}
+
+.dish-card:hover button {
+  background-color: tomato;
+  transition: 300ms;
+  color: white;
+}
+
+.dish-card img {
+  width: 100%;
+  max-height: 150px;
+  border-radius: 35px;
+}
+
+.dish-card .price {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+}
+
+.dish-card .dish-name {
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+
+.dish-card .weight {
+  color: gray;
+  margin: 5px 0;
+  margin-top: auto;
+}
+
+.dish-card button {
+  background-color: #f1eee9;
+  margin-top: 15px;
+  padding: 10px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+@media (max-width: 800px) {
+  .dishes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    text-align: center;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav a {
+    font-size: 22px;
+  }
+
+  section h2 {
+    text-align: center;
+  }
+
+  .dishes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Стили для формы заказа */
+.order-form-section {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  margin-top: 40px;
+}
+
+.order-form-section h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.form-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.order-details,
+.customer-details {
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.order-details h3,
+.customer-details h3 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: 2px solid tomato;
+  padding-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+  font-size: 1em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="time"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: tomato;
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+.checkbox-group label {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+}
+
+.radio-option input[type="radio"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+.radio-option label {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.reset-btn,
+.submit-btn {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+  flex: 1;
+}
+
+.reset-btn {
+  background-color: #f1eee9;
+  color: #333;
+}
+
+.reset-btn:hover {
+  background-color: #e0ddd9;
+}
+
+.submit-btn {
+  background-color: tomato;
+  color: white;
+  font-weight: bold;
+}
+
+.submit-btn:hover {
+  background-color: #ff6347;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 99, 71, 0.3);
+}
+
+/* Адаптивность для формы */
+@media (max-width: 800px) {
+  .form-columns {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .order-details,
+  .customer-details {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .order-form-section {
+    padding: 20px 10px;
+  }
+
+  .order-form-section h2 {
+    font-size: 1.7em;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .reset-btn,
+  .submit-btn {
+    width: 100%;
+  }
+}

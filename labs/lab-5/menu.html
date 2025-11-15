@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Собрать ланч - Доставка Бизнес-Ланчей</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="menu-styles.css" />
+    <script src="dishes.js"></script>
+    <script src="display-dishes.js"></script>
+    <script src="order-manager.js"></script>
+    <script>
+      let response = fetch("https://httpbin.org/post", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: "Petr",
+        }),
+      });
+      response.then((res) => console.log(res.body));
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Доставка Бизнес-Ланчей</h1>
+      <nav>
+        <a href="index.html">Главная</a>
+        <a href="menu.html" id="active">Собрать ланч</a>
+        <a href="order.html">Заказать</a>
+        <a href="#footer">Контакты</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="soups">
+        <h2>Супы</h2>
+        <div class="dishes">
+          <!-- Блюда будут добавлены через JavaScript -->
+        </div>
+      </section>
+
+      <section class="main-dishes">
+        <h2>Главные блюда</h2>
+        <div class="dishes">
+          <!-- Блюда будут добавлены через JavaScript -->
+        </div>
+      </section>
+
+      <section class="drinks">
+        <h2>Напитки</h2>
+        <div class="dishes">
+          <!-- Блюда будут добавлены через JavaScript -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Форма заказа -->
+    <section class="order-form-section">
+      <h2>Оформление заказа</h2>
+
+      <!-- Блок текущего заказа -->
+      <div class="current-order">
+        <h3>Ваш заказ</h3>
+        <div id="current-order-display" class="order-display">
+          <p class="no-selection">Ничего не выбрано</p>
+        </div>
+        <div id="order-total" class="order-total" style="display: none"></div>
+      </div>
+
+      <form id="order-form" action="https://httpbin.org/post" method="POST">
+        <!-- Скрытые поля для выбранных блюд -->
+        <input type="hidden" id="selected-soup" name="selected_soup" value="" />
+        <input type="hidden" id="selected-main" name="selected_main" value="" />
+        <input
+          type="hidden"
+          id="selected-drink"
+          name="selected_drink"
+          value=""
+        />
+
+        <div class="form-columns">
+          <!-- Блок с данными клиента -->
+          <div class="customer-details">
+            <h3>Данные для доставки</h3>
+
+            <div class="form-group">
+              <label for="name">Имя *</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group checkbox-group">
+              <input
+                type="checkbox"
+                id="newsletter"
+                name="newsletter"
+                checked
+              />
+              <label for="newsletter">Подписаться на рассылку</label>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Телефон *</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+
+            <div class="form-group">
+              <label for="address">Адрес доставки *</label>
+              <input type="text" id="address" name="address" required />
+            </div>
+
+            <div class="form-group">
+              <label>Время доставки *</label>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="time-morning"
+                    name="delivery_time"
+                    value="morning"
+                    required
+                  />
+                  <label for="time-morning">Утро (7:00 - 12:00)</label>
+                </div>
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="time-afternoon"
+                    name="delivery_time"
+                    value="afternoon"
+                  />
+                  <label for="time-afternoon">Обед (12:00 - 17:00)</label>
+                </div>
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="time-evening"
+                    name="delivery_time"
+                    value="evening"
+                  />
+                  <label for="time-evening">Вечер (17:00 - 23:00)</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="exact-time">Точное время доставки</label>
+              <input
+                type="time"
+                id="exact-time"
+                name="exact_time"
+                min="07:00"
+                max="23:00"
+                step="300"
+              />
+            </div>
+
+            <div class="form-buttons">
+              <button type="button" class="reset-btn" onclick="resetOrder()">
+                Сбросить заказ
+              </button>
+              <button type="submit" class="submit-btn">Отправить заказ</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+    <footer id="footer">
+      <p>Контактная информация:</p>
+      <p>Телефон: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+      <p>
+        Email: <a href="mailto:info@businesslunch.ru">info@businesslunch.ru</a>
+      </p>
+      <p>Адрес: г. Москва, ул. Примерная, д. 10</p>
+      <p>&copy; 2025 Доставка Бизнес-Ланчей. Все права защищены.</p>
+    </footer>
+  </body>
+</html>

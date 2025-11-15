@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Математическая игра</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="game-header">
+        <h1>Математическая игра</h1>
+        <div class="stats">
+          <div class="stat">Уровень: <span id="level">начальный</span></div>
+          <div class="stat">Правильные: <span id="correct">0</span></div>
+          <div class="stat">Неправильные: <span id="incorrect">0</span></div>
+          <div class="stat">Вопрос: <span id="question-number">1</span>/10</div>
+        </div>
+      </div>
+
+      <div class="game-content">
+        <div id="start-screen" class="screen active">
+          <h2>Добро пожаловать!</h2>
+          <p>Правила игры:</p>
+          <ul>
+            <li>10 вопросов на каждом уровне</li>
+            <li>80% правильных ответов для перехода на следующий уровень</li>
+            <li>3 уровня сложности: начальный, средний, продвинутый</li>
+          </ul>
+          <button id="start-btn" class="btn">Начать игру</button>
+        </div>
+
+        <div id="game-screen" class="screen">
+          <div class="question" id="question"></div>
+          <div class="answers" id="answers"></div>
+          <div class="feedback" id="feedback"></div>
+        </div>
+
+        <div id="result-screen" class="screen">
+          <h2 id="result-title"></h2>
+          <p id="result-message"></p>
+          <div class="result-buttons">
+            <button id="restart-btn" class="btn">Начать заново</button>
+            <button id="exit-btn" class="btn btn-secondary">Выйти</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
