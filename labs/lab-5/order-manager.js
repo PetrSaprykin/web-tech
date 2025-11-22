@@ -28,7 +28,6 @@ function updateOrderDisplay() {
 
   let orderHTML = "";
 
-
   orderHTML += `
         <div class="order-category">
             <h4>Суп</h4>

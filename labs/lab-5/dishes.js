@@ -1,4 +1,5 @@
 const dishes = [
+  // Супы (6 блюд)
   {
     keyword: "borshch",
     name: "Борщ с говядиной",
@@ -54,6 +55,7 @@ const dishes = [
     kind: "veg",
   },
 
+  // Главные блюда (6 блюд)
   {
     keyword: "grilled-chicken",
     name: "Куриная грудка на гриле с овощами",
@@ -109,6 +111,7 @@ const dishes = [
     kind: "veg",
   },
 
+  // Салаты (6 блюд)
   {
     keyword: "caesar-shrimp",
     name: "Салат Цезарь с креветками",
@@ -164,6 +167,7 @@ const dishes = [
     kind: "veg",
   },
 
+  // Напитки (6 блюд)
   {
     keyword: "orange-juice",
     name: "Апельсиновый сок",
@@ -219,6 +223,7 @@ const dishes = [
     kind: "hot",
   },
 
+  // Десерты (6 блюд)
   {
     keyword: "tiramisu",
     name: "Тирамису",

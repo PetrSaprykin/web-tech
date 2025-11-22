@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const sortedDishes = [...dishes].sort((a, b) => a.name.localeCompare(b.name));
 
@@ -10,14 +9,17 @@ document.addEventListener("DOMContentLoaded", function () {
     dessert: sortedDishes.filter((dish) => dish.category === "dessert"),
   };
 
+  // Отображаем блюда по категориям
   displayDishesByCategory("soup", dishesByCategory.soup);
   displayDishesByCategory("main", dishesByCategory.main);
   displayDishesByCategory("salad", dishesByCategory.salad);
   displayDishesByCategory("drink", dishesByCategory.drink);
   displayDishesByCategory("dessert", dishesByCategory.dessert);
 
-  addDishSelectionHandlers();
+  // Добавляем фильтры для каждой категории
+  addFiltersToCategories();
 
+  addDishSelectionHandlers();
   addFilterHandlers();
 });
 
@@ -66,7 +68,6 @@ function createDishCard(dish) {
 
 function addDishSelectionHandlers() {
   document.addEventListener("click", function (e) {
-    // Проверяем, был ли клик по кнопке "Добавить" или по карточке
     const dishCard = e.target.closest(".dish-card");
     if (dishCard) {
       const dishKeyword = dishCard.getAttribute("data-dish");
@@ -77,6 +78,11 @@ function addDishSelectionHandlers() {
       }
     }
   });
+}
+
+function addFiltersToCategories() {
+  // Фильтры уже добавлены в HTML, поэтому эта функция может быть пустой
+  // или использоваться для дополнительной настройки фильтров
 }
 
 function addFilterHandlers() {
