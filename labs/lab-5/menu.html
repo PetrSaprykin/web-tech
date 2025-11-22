@@ -15,18 +15,6 @@
     <script src="dishes.js"></script>
     <script src="display-dishes.js"></script>
     <script src="order-manager.js"></script>
-    <script>
-      let response = fetch("https://httpbin.org/post", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: "Petr",
-        }),
-      });
-      response.then((res) => console.log(res.body));
-    </script>
   </head>
   <body>
     <header>
@@ -40,22 +28,65 @@
     </header>
 
     <main>
+      <!-- Супы -->
       <section class="soups">
         <h2>Супы</h2>
+        <div class="filters">
+          <button class="filter-btn" data-kind="fish">рыбный</button>
+          <button class="filter-btn" data-kind="meat">мясной</button>
+          <button class="filter-btn" data-kind="veg">вегетарианский</button>
+        </div>
         <div class="dishes">
           <!-- Блюда будут добавлены через JavaScript -->
         </div>
       </section>
 
+      <!-- Главные блюда -->
       <section class="main-dishes">
         <h2>Главные блюда</h2>
+        <div class="filters">
+          <button class="filter-btn" data-kind="fish">рыбное</button>
+          <button class="filter-btn" data-kind="meat">мясное</button>
+          <button class="filter-btn" data-kind="veg">вегетарианское</button>
+        </div>
         <div class="dishes">
           <!-- Блюда будут добавлены через JavaScript -->
         </div>
       </section>
 
+      <!-- Салаты -->
+      <section class="salads">
+        <h2>Салаты и стартеры</h2>
+        <div class="filters">
+          <button class="filter-btn" data-kind="fish">рыбный</button>
+          <button class="filter-btn" data-kind="meat">мясной</button>
+          <button class="filter-btn" data-kind="veg">вегетарианский</button>
+        </div>
+        <div class="dishes">
+          <!-- Блюда будут добавлены через JavaScript -->
+        </div>
+      </section>
+
+      <!-- Напитки -->
       <section class="drinks">
         <h2>Напитки</h2>
+        <div class="filters">
+          <button class="filter-btn" data-kind="cold">холодный</button>
+          <button class="filter-btn" data-kind="hot">горячий</button>
+        </div>
+        <div class="dishes">
+          <!-- Блюда будут добавлены через JavaScript -->
+        </div>
+      </section>
+
+      <!-- Десерты -->
+      <section class="desserts">
+        <h2>Десерты</h2>
+        <div class="filters">
+          <button class="filter-btn" data-kind="small">маленькая порция</button>
+          <button class="filter-btn" data-kind="medium">средняя порция</button>
+          <button class="filter-btn" data-kind="large">большая порция</button>
+        </div>
         <div class="dishes">
           <!-- Блюда будут добавлены через JavaScript -->
         </div>
@@ -81,8 +112,20 @@
         <input type="hidden" id="selected-main" name="selected_main" value="" />
         <input
           type="hidden"
+          id="selected-salad"
+          name="selected_salad"
+          value=""
+        />
+        <input
+          type="hidden"
           id="selected-drink"
           name="selected_drink"
+          value=""
+        />
+        <input
+          type="hidden"
+          id="selected-dessert"
+          name="selected_dessert"
           value=""
         />
 
