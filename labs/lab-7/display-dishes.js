@@ -1,4 +1,3 @@
-// Функция для загрузки блюд из API
 async function loadDishes() {
   try {
     const API_URL = "https://edu.std-900.ist.mospolytech.ru/labs/api/dishes";
@@ -11,12 +10,10 @@ async function loadDishes() {
 
     dishes = await response.json();
 
-    // Инициализируем страницу после загрузки данных
     initializePage();
   } catch (error) {
     console.error("Ошибка при загрузке блюд:", error);
 
-    // Показываем сообщение об ошибке пользователю
     const errorMessage = document.createElement("div");
     errorMessage.style.cssText = `
       background-color: #ffe6e6;
@@ -37,19 +34,17 @@ async function loadDishes() {
   }
 }
 
-// Функция для инициализации страницы после загрузки данных
 function initializePage() {
   const sortedDishes = [...dishes].sort((a, b) => a.name.localeCompare(b.name));
 
   const dishesByCategory = {
     soup: sortedDishes.filter((dish) => dish.category === "soup"),
-    main: sortedDishes.filter((dish) => dish.category === "main"),
+    main: sortedDishes.filter((dish) => dish.category === "main-course"),
     salad: sortedDishes.filter((dish) => dish.category === "salad"),
     drink: sortedDishes.filter((dish) => dish.category === "drink"),
     dessert: sortedDishes.filter((dish) => dish.category === "dessert"),
   };
 
-  // отображаем блюда по категориям
   displayDishesByCategory("soup", dishesByCategory.soup);
   displayDishesByCategory("main", dishesByCategory.main);
   displayDishesByCategory("salad", dishesByCategory.salad);
@@ -61,7 +56,6 @@ function initializePage() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Загружаем блюда из API
   loadDishes();
 });
 
