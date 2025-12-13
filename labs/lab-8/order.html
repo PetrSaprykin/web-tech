@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Оформление заказа - Доставка Бизнес-Ланчей</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="menu-styles.css" />
+    <link rel="stylesheet" href="order-styles.css" />
+    <script src="display-dishes.js"></script>
+    <script src="order-manager.js"></script>
+    <script src="order-page.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Доставка Бизнес-Ланчей</h1>
+      <nav>
+        <a href="index.html">Главная</a>
+        <a href="menu.html">Собрать ланч</a>
+        <a href="order.html" id="active">Оформить заказ</a>
+        <a href="#footer">Контакты</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="order-summary-section">
+        <h2>Состав заказа</h2>
+        <div id="order-summary" class="order-summary">
+          <p class="no-selection-message">
+            Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на
+            страницу
+            <a href="menu.html">Собрать ланч</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="order-form-section">
+        <h2>Оформление заказа</h2>
+
+        <div class="form-and-order">
+          <!-- Левая часть: выбранные блюда -->
+          <div class="selected-dishes-panel">
+            <h3>Ваш заказ</h3>
+            <div id="current-order-display" class="order-display">
+              <p class="no-selection">Ничего не выбрано</p>
+            </div>
+            <div
+              id="order-total"
+              class="order-total"
+              style="display: none"
+            ></div>
+          </div>
+
+          <!-- Правая часть: форма -->
+          <div class="order-form-container">
+            <form id="order-form" action="#" method="POST">
+              <div class="customer-details">
+                <h3>Данные для доставки</h3>
+
+                <div class="form-group">
+                  <label for="name">Имя *</label>
+                  <input type="text" id="name" name="full_name" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email *</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+
+                <div class="form-group checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="newsletter"
+                    name="subscribe"
+                    value="1"
+                    checked
+                  />
+                  <label for="newsletter">Подписаться на рассылку</label>
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Телефон *</label>
+                  <input type="tel" id="phone" name="phone" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="address">Адрес доставки *</label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="delivery_address"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Тип доставки *</label>
+                  <div class="radio-group">
+                    <div class="radio-option">
+                      <input
+                        type="radio"
+                        id="delivery-now"
+                        name="delivery_type"
+                        value="now"
+                        required
+                        checked
+                      />
+                      <label for="delivery-now">Доставить сейчас</label>
+                    </div>
+                    <div class="radio-option">
+                      <input
+                        type="radio"
+                        id="delivery-by-time"
+                        name="delivery_type"
+                        value="by_time"
+                      />
+                      <label for="delivery-by-time"
+                        >Доставить к указанному времени</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="form-group"
+                  id="delivery-time-group"
+                  style="display: none"
+                >
+                  <label for="delivery-time">Время доставки *</label>
+                  <input
+                    type="time"
+                    id="delivery-time"
+                    name="delivery_time"
+                    min="07:00"
+                    max="23:00"
+                    step="300"
+                  />
+                  <small>Доступно с 7:00 до 23:00 с шагом 5 минут</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="comment">Комментарий</label>
+                  <textarea id="comment" name="comment"></textarea>
+                </div>
+
+                <!-- Скрытые поля для ID блюд -->
+                <input type="hidden" id="soup-id" name="soup_id" value="" />
+                <input
+                  type="hidden"
+                  id="main-course-id"
+                  name="main_course_id"
+                  value=""
+                />
+                <input type="hidden" id="salad-id" name="salad_id" value="" />
+                <input type="hidden" id="drink-id" name="drink_id" value="" />
+                <input
+                  type="hidden"
+                  id="dessert-id"
+                  name="dessert_id"
+                  value=""
+                />
+
+                <div class="form-buttons">
+                  <button
+                    type="button"
+                    class="reset-btn"
+                    onclick="clearOrder()"
+                  >
+                    Очистить заказ
+                  </button>
+                  <button type="submit" class="submit-btn" id="submit-order">
+                    Отправить заказ
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <p>Контактная информация:</p>
+      <p>Телефон: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+      <p>
+        Email: <a href="mailto:info@businesslunch.ru">info@businesslunch.ru</a>
+      </p>
+      <p>Адрес: г. Москва, ул. Примерная, д. 10</p>
+      <p>&copy; 2025 Доставка Бизнес-Ланчей. Все права защищены.</p>
+    </footer>
+  </body>
+</html>
